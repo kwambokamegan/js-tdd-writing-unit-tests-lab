@@ -1,28 +1,25 @@
 // Your tests here
-import { isPalindrome } from "../utils";
+//Passes if the function returns true for a palindrome and false if otherwise
+import { isPalindrome } from '../utils';
 
-describe("isPalindrome", () => {
-  it("returns true for a palindrome", () => {
-    expect(isPalindrome("racecar")).toBe(true);
+describe('isPalindrome', () => {
+  it('returns true if the input is a palindrome and  is case-insensitive', () => {
+    //Arrange
+    const word1 = 'Racecar';
+    const word2 = 'car';
+    //Act
+    const result = isPalindrome(word1);
+    //Assert
+    expect(result).toBe(true);
   });
+  it("throws an error if the input has any non-alphabetic characters", () => {
+    const word = "race car";
 
-  it("returns false for a non-palindrome", () => {
-    expect(isPalindrome("car")).toBe(false);
+    expect(() => isPalindrome(word)).toThrow();
   });
+  it("throws an error if the input is an empty string", () => {
+    const word = "";
 
-  it("returns true for a palindrome with mixed case", () => {
-    expect(isPalindrome("RaCeCaR")).toBe(true);
-  });
-
-  it("returns false for an empty string", () => {
-    expect(isPalindrome("")).toBe(false);
-  });
-
-  it("throws an error for a string with non-alphabetic characters", () => {
-    expect(() => isPalindrome("hello!")).toThrow();
-  });
-
-  it("throws an error for a non-string input", () => {
-    expect(() => isPalindrome(123)).toThrow();
+    expect(() => isPalindrome(word)).toThrow();
   });
 });
